@@ -31,6 +31,7 @@ export const routes: Routes = [
       { path: 'mensajes', loadComponent: () => import('./admin/pages/messages/messages.component').then(m => m.MessagesComponent) },
       { path: 'mensaje/:id', loadComponent: () => import('./admin/pages/messages-detail/messages-detail.component').then(m => m.MessagesDetailComponent) },
       { path: 'paquetes', loadComponent: () => import('./admin/pages/packages/packages-list.component').then(m => m.PackagesListComponent) },
+      { path: 'mensajes-anonimos', loadComponent: () => import('./admin/pages/anonymous-messages/anonymous-messages.component').then(m => m.AnonymousMessagesComponent) },
     ]
   },
   // Redirección si no existe la ruta

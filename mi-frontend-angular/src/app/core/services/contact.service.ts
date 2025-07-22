@@ -8,7 +8,7 @@ import { CreateContactDto } from '../dto/create-contact.dto'; // <-- importa el 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/contact`;
+  private apiUrl = `${environment.apiUrl}/contacts`;
 
   // DTO para mensaje de formulario por primera vez sin usuario registrado
   sendMessage(payload: CreateContactDto): Observable<Contact> {

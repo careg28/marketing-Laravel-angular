@@ -4,7 +4,8 @@
       </div>
       
     <section class="contact-section">
-        <form [formGroup]="form" (ngSubmit)="submitForm()" class="contact-form" autocomplete="off" novalidate>
+        <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="submitForm(formDirective)">
+
 
             <mat-form-field appearance="outline" class="contact-field">
                 <mat-label>Nombre</mat-label>
@@ -18,6 +19,23 @@
                 </mat-error>
                 }
             </mat-form-field>
+
+            <mat-form-field appearance="outline" class="contact-field">
+                <mat-label>Teléfono (opcional)</mat-label>
+                <input matInput formControlName="tel" type="text" placeholder="+34 600 123 456">
+                @if (form.get('tel')?.touched && form.get('tel')?.errors) {
+                  <mat-error *ngIf="form.get('tel')?.hasError('minlength')">
+                    El teléfono debe tener al menos 6 caracteres.
+                  </mat-error>
+                  <mat-error *ngIf="form.get('tel')?.hasError('maxlength')">
+                    El teléfono no puede exceder 15 caracteres.
+                  </mat-error>
+                  <mat-error *ngIf="form.get('tel')?.hasError('pattern')">
+                    Formato de teléfono no válido.
+                  </mat-error>
+                }
+              </mat-form-field>
+              
 
             <mat-form-field appearance="outline" class="contact-field">
                 <mat-label>Email</mat-label>

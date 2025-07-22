@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ConversationController;
 use App\Http\Controllers\Api\ContactMessageController;
+use App\Http\Controllers\Api\ContactController;
+
 
 // --- Rutas de autenticación ---
 Route::post('login', [AuthController::class, 'login']);
@@ -47,6 +49,12 @@ Route::delete('packages/{package}', [PackageController::class, 'destroy']);
 
 //paquetes + caracteristicas:
 Route::apiResource('package-features', PackageFeatureController::class);
+
+//formulario contacto
+Route::post('/contacts', [ContactController::class, 'store']);
+Route::get('/contacts', [ContactController::class, 'index']);
+
+
 
 
     

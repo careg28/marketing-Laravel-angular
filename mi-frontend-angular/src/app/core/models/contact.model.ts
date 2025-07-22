@@ -2,6 +2,7 @@ export interface Contact {
   id: number;
   user_id?: number | null;
   name: string;
+  tel?: string;
   email: string;
   message: string;
   response?: string | null;      

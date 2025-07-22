@@ -1,0 +1,30 @@
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .muted {
+    color: #888;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+
+  .ver-responder-btn {
+    background: #ccff00 !important;
+    color: #222 !important;
+    border-radius: 18px;
+    font-weight: 600;
+    padding: 6px 18px;
+    box-shadow: 0 1px 8px rgba(204, 255, 0, 0.05);
+    transition: filter 0.13s;
+  }
+  .ver-responder-btn:hover {
+    filter: brightness(0.95);
+    background: #b3e600 !important; /* Un verde un poco más oscuro en hover */
+  }
+  

@@ -1,0 +1,23 @@
+<section class="contenedor">
+    <div class="hero-animated">
+  <svg class="hero-svg" viewBox="0 0 360 120" preserveAspectRatio="none">
+    <path d="M0,40 Q90,120 180,60 T360,80 V120 H0 Z"
+          fill="#aaff00">
+      <animate attributeName="d"
+               values="
+                 M0,40 Q90,120 180,60 T360,80 V120 H0 Z;
+                 M0,60 Q90,40 180,80 T360,60 V120 H0 Z;
+                 M0,40 Q90,120 180,60 T360,80 V120 H0 Z"
+               dur="8s" repeatCount="indefinite" />
+    </path>
+  </svg>
+  <div appAnimateInView [attr.data-animate]="'fade-zoom'"  class="hero-text">
+    <h1>Impulsa tu presencia digital</h1>
+    <p>Soluciones web y marketing <strong>personalizadas</strong> para empresas modernas.</p>
+    <button mat-raised-button color="primary" class="cta-btn" [routerLink]="['contacto']" routerLinkActive="router-link-active">
+      <span>¡Solicita tu presupuesto!</span>
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>
+</section>

@@ -1,0 +1,82 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="package-form">
+  <div class="contenedor-form">
+
+    <!-- NOMBRE -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" placeholder="Ej: Plan Básico" />
+      <mat-error *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+        El nombre es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+        Máximo 50 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- DESCRIPCIÓN -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" placeholder="Ej: Este paquete incluye..." rows="3"></textarea>
+      <mat-error *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">
+        La descripción es obligatoria.
+      </mat-error>
+      <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
+        Máximo 200 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- PRECIO -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" formControlName="price" placeholder="Ej: 49.99" />
+      <mat-error *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched">
+        El precio es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('price')?.hasError('min')">
+        No puede ser negativo.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- CARACTERÍSTICAS -->
+    <div formArrayName="features" class="features-form">
+      <label style="font-weight:500; margin-bottom: 8px; display:block;">
+        Características incluidas:
+      </label>
+
+      <div *ngFor="let ctrl of features.controls; let i = index" [formGroup]="ctrl" class="feature-row">
+        <mat-form-field appearance="outline" class="feature-input">
+          <input matInput formControlName="label" placeholder="Ej: Tienda online" />
+          <mat-error *ngIf="ctrl.get('label')?.hasError('required') && ctrl.get('label')?.touched">
+            Campo obligatorio.
+          </mat-error>
+          <mat-error *ngIf="ctrl.get('label')?.hasError('maxlength')">
+            Máximo 80 caracteres.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="included" class="included-checkbox">
+          Incluido
+        </mat-checkbox>
+
+        <button mat-icon-button color="warn" type="button" (click)="removeFeature(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <button mat-raised-button type="button" color="accent" (click)="addFeature()">
+        <mat-icon>add</mat-icon> Agregar característica
+      </button>
+    </div>
+
+    <!-- BOTONES DE ACCIÓN -->
+    <div class="actions" style="margin-top:24px;">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading">
+        {{ editMode ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button mat-button type="button" (click)="cancel()" [disabled]="loading">
+        Cancelar
+      </button>
+    </div>
+
+  </div>
+</form>

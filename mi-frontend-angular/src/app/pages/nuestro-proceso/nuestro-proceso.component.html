@@ -1,0 +1,79 @@
+<section class="intro-proceso">
+    <svg class="wave-top" viewBox="0 0 1440 100">
+      <path d="M0,0 C600,100 800,0 1440,100 L1440,0 L0,0 Z" fill="#f9fafe"/>
+    </svg>
+    <div class="wrap">
+      <h2>Un camino claro, ágil y eficiente </h2>
+      <p>Trabajamos paso a paso para lograr una web que conecte, funcione y te represente.</p>
+    </div>
+  </section>
+  
+  <div class="hero-animated" [@heroFadeIn]>
+    <div class="hero-text">
+      <h1>Nuestro Proceso</h1>
+      <p>Descubre cómo transformamos tus ideas en resultados digitales.</p>
+      <button mat-flat-button color="primary" class="cta-btn">
+        <mat-icon>explore</mat-icon>
+        Ver servicios
+      </button>
+    </div>
+    <svg class="hero-svg" viewBox="0 0 200 200">
+      <!-- SVG geométrico animado con CSS -->
+      <circle cx="100" cy="100" r="80"/>
+    </svg>
+  </div>
+  
+  <mat-horizontal-stepper
+    labelPosition="bottom"
+    class="custom-stepper"
+    [linear]="false"
+    [@stepperFadeIn]>
+    <mat-step *ngFor="let paso of pasos">
+      <ng-template matStepLabel>
+        <mat-icon>{{ paso.icono }}</mat-icon>
+        {{ paso.titulo }}
+      </ng-template>
+      <div class="step-content" [@stepContent]>
+        <img [src]="paso.imagen" alt="" class="step-img" />
+        <div class="step-text">
+          <h3>{{ paso.titulo }}</h3>
+          <p>{{ paso.descripcion }}</p>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+
+  <section class="beneficios">
+    <h2>Lo que obtienes con nosotros</h2>
+    <div class="grid-beneficios">
+      <div class="item">
+        <mat-icon>trending_up</mat-icon>
+        <h3>Mayor visibilidad</h3>
+        <p>Atrae nuevos clientes con una web que posiciona.</p>
+      </div>
+      <div class="item">
+        <mat-icon>mobile_friendly</mat-icon>
+        <h3>Diseño responsive</h3>
+        <p>Perfecta en móviles, tablets y ordenadores.</p>
+      </div>
+      <div class="item">
+        <mat-icon>support_agent</mat-icon>
+        <h3>Soporte cercano</h3>
+        <p>Te acompañamos en todo momento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="contenedor-titulo-contacto">
+        <h2>¿Listo para potenciar tu presencia online?</h2>
+    </div>
+    <div class="btn-contacto">
+        <app-btn-escribenos></app-btn-escribenos>
+    </div>
+  </section>
+  
+  
+
+  

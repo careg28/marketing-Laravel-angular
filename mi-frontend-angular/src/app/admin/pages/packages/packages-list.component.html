@@ -1,0 +1,53 @@
+<section class="contenedor-paquetes">
+  <div class="packages-header">
+    <h2>Paquetes disponibles</h2>
+    <button mat-raised-button class="green-gradient function-button" (click)="createNew()">
+      <mat-icon>add_circle</mat-icon>
+      <span>Nuevo paquete</span>
+    </button>
+  </div>
+
+  <app-package-form
+    *ngIf="showForm"
+    [packageData]="selectedPackage"
+    (saved)="onSaved()"
+    (cancelled)="onCancelled()"
+  ></app-package-form>
+
+  <table *ngIf="!showForm" class="packages-table mat-elevation-z2">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Características</th> <!-- Nueva columna -->
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pkg of packages">
+      <td>{{ pkg.name }}</td>
+      <td>{{ pkg.description }}</td>
+      <td>
+        <ul class="features-list" *ngIf="pkg.features?.length">
+          <li *ngFor="let feature of pkg.features">
+            <mat-icon color="primary" inline style="font-size:18px;vertical-align:middle;">check_circle</mat-icon>
+            <span>{{ feature.label }}</span>
+          </li>
+        </ul>
+      </td>
+      <td>{{ pkg.price | currency:'EUR' }}</td>
+      <td>
+        <button mat-raised-button class="green-gradient function-button" (click)="edit(pkg)">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </button>
+        <button mat-raised-button class="delete-package-button function-button" (click)="delete(pkg)">
+          <mat-icon>delete</mat-icon>
+          <span>Eliminar</span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</section>

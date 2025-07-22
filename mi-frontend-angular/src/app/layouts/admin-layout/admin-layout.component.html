@@ -1,0 +1,31 @@
+<mat-sidenav-container class="admin-container">
+  <mat-sidenav #drawer class="admin-sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="admin-toolbar" color="transparent">
+      <button mat-icon-button (click)="drawer.toggle()" *ngIf="!isDesktop" class="sidebar-hamburger">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="contenedor-navegacion">
+        <span class="toolbar-title">{{nombreUrl}}</span>
+        
+      </div>
+      <!-- boton de loguot -->
+      <app-logout [context]="'toolbar'"></app-logout>
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<footer class="admin-footer">
+  <div>
+    © 2025 MARKETING | Panel de administración
+  </div>
+  <div class="admin-footer-version">
+    v1.0.0
+  </div>
+</footer>
+
+

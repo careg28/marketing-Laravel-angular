@@ -1,0 +1,57 @@
+<div class="table-responsive">
+<table mat-table [dataSource]="conversations" class="mat-elevation-z1" *ngIf="conversations.length">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let conv">{{ conv.id }}</td>
+  </ng-container>
+
+  <!-- User Column -->
+  <ng-container matColumnDef="user">
+    <th mat-header-cell *matHeaderCellDef>Cliente</th>
+    <td mat-cell *matCellDef="let conv">{{ conv.user?.name || conv.user_id }}</td>
+  </ng-container>
+
+  <!-- Subject Column -->
+  <ng-container matColumnDef="subject">
+    <th mat-header-cell *matHeaderCellDef>Asunto</th>
+    <td mat-cell *matCellDef="let conv">{{ conv.subject }}</td>
+  </ng-container>
+
+  <!-- Created At Column -->
+  <ng-container matColumnDef="created_at">
+    <th mat-header-cell *matHeaderCellDef>Creado</th>
+    <td mat-cell *matCellDef="let conv">{{ conv.created_at | date: 'short' }}</td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Estado</th>
+    <td mat-cell *matCellDef="let conv">
+      <span [ngClass]="getStatus(conv) === 'Cerrada' ? 'status-closed' : 'status-open'">
+        {{ getStatus(conv) }}
+      </span>
+    </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <!-- ... otras celdas ... -->
+    <td mat-cell *matCellDef="let msg">
+    <button
+        mat-raised-button
+        class="ver-responder-btn"
+        (click)="goToDetail(msg.id)">
+        Ver/Responder
+    </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<p *ngIf="!conversations.length" class="muted">No hay conversaciones abiertas.</p>
+</div>

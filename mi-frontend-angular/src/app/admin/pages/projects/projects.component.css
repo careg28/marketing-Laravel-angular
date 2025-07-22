@@ -1,0 +1,8 @@
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table.mat-table {
+  min-width: 800px; /* O ajusta según la cantidad de columnas */
+}

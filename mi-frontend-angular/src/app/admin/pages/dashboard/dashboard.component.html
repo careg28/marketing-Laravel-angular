@@ -1,0 +1,62 @@
+<section class="contenedor-admin">
+  <div class="dashboard-welcome">
+    <h2>¡Hola, {{ userName }}!</h2>
+    <p>Bienvenido/a al panel de administración.</p>
+  </div>
+
+  <div class="dashboard-cards">
+    <app-stat-card [value]="usersCount" label="Usuarios" icon="people" link="/admin/usuarios">
+    </app-stat-card>
+
+    <app-stat-card [value]="projectsCount" label="Proyectos" icon="work" link="/admin/projectos">
+    </app-stat-card>
+
+    <app-stat-card [value]="messagesCount" label="Mensajes" icon="message" link="/admin/mensajes">
+    </app-stat-card>
+  </div>
+
+  <div class="dashboard-grid">
+    <section class="dashboard-section">
+      <div class="section-header">
+        <span>Proyectos recientes</span>
+        <a mat-stroked-button color="primary" routerLink="/admin/projectos">Ver todos</a>
+      </div>
+      <ul>
+        <li *ngFor="let project of recentProjects">
+          <span>{{ project.name }}</span> 
+          <span class="muted">({{ project.date }})</span>
+          <p class="descripcion-proyecto">{{ project.description }}</p>
+        </li>
+        <hr>
+        <li *ngFor="let project of recentProjects">
+          <span>{{ project.name }}</span> 
+          <span class="muted">({{ project.date }})</span>
+          <p class="descripcion-proyecto">{{ project.description }}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="dashboard-section">
+      <div class="section-header">
+        <span>Conversaciones recientes</span>       
+        <a mat-stroked-button color="primary" routerLink="/admin/mensajes">Ver todos</a>
+      </div>
+      <ul>
+        <li *ngFor="let conv of recentConversations; let i = index">
+          <strong>
+            {{ conv.user?.name || 'Usuario #'+conv.user_id }}
+          </strong>
+          <span class="muted">
+            ({{ conv.updated_at | date:'short' }})
+          </span>
+          <br>
+          <span *ngIf="conv.last_message">{{ conv.last_message.message | slice:0:40 }}...</span>
+          <span *ngIf="!conv.last_message">Sin mensajes</span>
+          <hr *ngIf="i < recentConversations.length - 1">
+        </li>
+        
+      </ul>
+    </section>
+  </div>
+  <app-cards-package></app-cards-package>
+</section>

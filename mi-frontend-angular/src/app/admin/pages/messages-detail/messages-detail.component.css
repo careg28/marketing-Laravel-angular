@@ -1,0 +1,61 @@
+.conversation-detail {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 24px 12px;
+}
+.messages-history {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 18px 10px;
+  margin-bottom: 20px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+.message-bubble {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f4f4f4;
+  box-shadow: 0 2px 5px 0 #eaeaea1f;
+  position: relative;
+}
+.message-bubble.admin {
+  background: #eaffd2;
+  text-align: right;
+}
+.message-bubble.user {
+  background: #f5f5f5;
+  text-align: left;
+}
+.bubble-meta {
+  font-size: 0.88rem;
+  color: #6c757d;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+.bubble-author {
+  font-weight: 700;
+}
+.bubble-date {
+  font-style: italic;
+}
+.response-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+.full-width {
+  width: 100%;
+}
+.success-message {
+  color: #23c445;
+  font-size: 0.98rem;
+  margin-left: 6px;
+}
+.error-message {
+  color: #ff4242;
+  font-size: 0.98rem;
+  margin-left: 6px;
+}

@@ -1,0 +1,208 @@
+/* ----------------- CONTENEDOR PRINCIPAL ----------------- */
+.paquete-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding: 32px;
+  /* No cambia nada aquí, es tu base */
+}
+
+/* ----------------- TARJETA ----------------- */
+.paquete-card {
+  position: relative;
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: #fff;
+  min-height: 420px;     /* Base para mobile, sube en desktop */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;     /* Mejor para animaciones y layout */
+  margin-bottom: 12px;
+}
+
+/* Borde/gradiente arriba de la tarjeta, estilo PRO */
+.paquete-card::before {
+  content: '';
+  display: block;
+  height: 8px;
+  background: linear-gradient(120deg, #1565c0 60%, #aaff00 100%);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-bottom: 2px;
+}
+
+/* -------------- HEADER Y TÍTULOS -------------- */
+.paquete-card mat-card-header {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.paquete-card mat-card-title {
+  color: #1565c0;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.paquete-card mat-card-subtitle {
+  color: black;
+  font-weight: normal;
+}
+
+.contact-title-wrap {
+  text-align: center;
+}
+
+/* ----------------- DESCRIPCIÓN con 4 LÍNEAS MÁX ----------------- */
+.paquete-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 12px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;         /* Limita a 4 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 6.4em;             /* 4 líneas x line-height (1.6em) */
+  max-height: 6.4em;             /* Igual a min-height para alineación */
+}
+
+/* ----------- CONTENIDO CENTRAL de la TARJETA ----------- */
+.mat-card-content, .paquete-card .mat-card-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: auto;
+  padding-bottom: 70px;   /* Espacio para el botón fijo abajo */
+  min-height: 200px;
+}
+
+/* ----------- LISTA DE FEATURES/CHECKS ----------- */
+.features-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+/* ----------- CADA CHECK INDIVIDUAL (mobile: sin min-height) ----------- */
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  /* fuerza el mismo alineado para icono y texto */
+  line-height: 1.6;
+}
+
+.features-list mat-icon {
+  font-size: 22px;           /* tamaño óptimo para lista */
+  vertical-align: middle;    /* importante: centra el ícono verticalmente */
+  margin-bottom: 2px;        /* o prueba margin-top: 2px según el caso */
+  color: #63c41c;            /* o tu color de check */
+  min-width: 22px;           /* mantiene el espacio fijo */
+}
+.features-list li span {
+  display: block;
+}
+
+/* ----------- BOTÓN PEGADO SIEMPRE ABAJO ----------- */
+.mat-card-actions, .paquete-card .mat-card-actions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+  background: linear-gradient(to top, #fff 80%, transparent 100%);
+  z-index: 2;
+}
+
+/* ----------- ESTILO DEL BOTÓN ----------- */
+.btn-contratar {
+  background: linear-gradient(to right, #aaff00, #77cc00);
+  color: #1b1b1b;
+  font-weight: 300;
+  border-radius: 24px;
+  padding: 8px 16px;
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(80,196,28,0.12);
+  margin-top: 12px;
+}
+.mat-mdc-card-actions{
+  justify-content: center!important;
+}
+.btn-contratar:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.btn-contratar span {
+  font-weight: bold!important;
+  font-size: 1.2rem;
+}
+
+/* ------------------- DASHBOARD SECTION Y BOTÓN EDITAR (si usas) ------------------- */
+.dashboard-section {
+  flex: 1 1 320px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px 0 rgba(34, 40, 57, .07);
+  padding: 22px 28px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+.contenedor-edit-botton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------------- DESKTOP: GRID Y ALTURA MÍNIMA EN FEATURES ------------------- */
+@media (min-width: 900px) {
+  .paquete-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0px;
+    padding: 32px;
+    align-items: stretch;
+  }
+  .contenedor-paquetes{
+    background: #fff;
+     padding: 3rem 0 3rem 0;
+        margin: 40px auto;
+        box-shadow: 0 12px 48px -10px rgba(34, 77, 131, 0.08), 0 2px 8px 0 rgba(34, 77, 131, 0.06);
+        border-radius: 30px;
+        max-width: 1420px;
+  }
+  .contact-title-wrap{
+    margin:0px;
+  }
+  .paquete-container{
+            display: flex;
+    gap: 30px;
+}
+  
+  .paquete-card {
+    min-width: 0;
+    min-height: 540px;    /* Más alto en escritorio */
+    max-width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+  }
+  /* Ahora sí, fuerza altura mínima en la lista y en cada check SOLO en desktop */
+  .features-list {
+   min-height: 234px;  /* Suficiente para 5-6 checks; sube si tienes features largos */
+  }
+  .features-list li {
+    min-height: 38px;     /* Cada check ocupa al menos este alto */
+  }
+  
+}

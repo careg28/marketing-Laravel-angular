@@ -1,0 +1,13 @@
+.contact-button {
+    background: #bbff00 !important;
+    color: #202020 !important;
+    font-weight: bold;
+    padding: 0 18px !important;
+    margin-right: 8px;
+    border-radius: 20px !important;
+    height: 40px;
+    box-shadow: 0 2px 8px #aaff0011;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

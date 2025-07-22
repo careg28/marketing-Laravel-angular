@@ -1,0 +1,65 @@
+<section class="contacto-hero">
+    <div class="wrap">
+      <h1>Contáctanos</h1>
+      <p>¿Tienes una idea, duda o propuesta? Estamos listos para escucharte y ayudarte.</p>
+    </div>
+  </section>
+  
+  
+  <mat-divider></mat-divider>
+  
+  <section class="canales-contacto" appAnimateInView [attr.data-animate]="'fade-zoom'">
+    <div class="wrap">
+      <h2>Otras formas de contacto</h2>
+      <div class="grid-canales">
+        <mat-card class="canal">
+          <mat-card-header>
+            <mat-icon>email</mat-icon>
+            <mat-card-title>Email</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p><a href="mailto:hola@tuweb.com">tucorreo</a></p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="canal">
+          <mat-card-header>
+            <mat-icon>call</mat-icon>
+            <mat-card-title>Teléfono</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p><a href="tel:+34900000000">+34 900 000 000</a></p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="canal">
+          <mat-card-header>
+            <mat-icon>chat</mat-icon>
+            <mat-card-title>WhatsApp</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p><a href="https://wa.me/34123456789" target="_blank">Chatea al instante</a></p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="canal">
+          <mat-card-header>
+            <mat-icon>location_on</mat-icon>
+            <mat-card-title>Dirección</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Calle Creatividad, 88<br>Bilbao, España</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+  
+  <mat-divider></mat-divider>
+  
+  <section class="formulario-contacto">
+    <div class="wrap"appAnimateInView [attr.data-animate]="'fade-zoom'">
+      <h2>Formulario directo</h2>
+      <p>Completa el siguiente formulario y nos pondremos en contacto contigo muy pronto.</p>   
+        <app-contact-form></app-contact-form>
+
+    </div>
+  </section>
+  

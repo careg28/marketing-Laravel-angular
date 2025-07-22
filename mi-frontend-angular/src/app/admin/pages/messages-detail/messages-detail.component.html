@@ -1,0 +1,28 @@
+<section class="conversation-detail">
+  <button mat-stroked-button color="primary" (click)="volver()">← Volver</button>
+  
+  <h2 class="mb-2">Conversación #{{ conversation?.id }}</h2>
+  <p class="muted" *ngIf="conversation?.subject">{{ conversation?.subject }}</p>
+  
+  <div class="messages-history" *ngIf="messages.length; else noMessages">
+    <div *ngFor="let msg of messages" class="message-bubble" [ngClass]="{ 'admin': msg.is_admin, 'user': !msg.is_admin }">
+      <div class="bubble-meta">
+        <span class="bubble-author">{{ msg.is_admin ? 'Admin' : 'Cliente' }}</span>
+        <span class="bubble-date">{{ msg.created_at | date: 'short' }}</span>
+      </div>
+      <div class="bubble-text">{{ msg.message }}</div>
+    </div>
+  </div>
+  <ng-template #noMessages>
+    <p class="muted">Aún no hay mensajes en esta conversación.</p>
+  </ng-template>
+
+  <form [formGroup]="responseForm" (ngSubmit)="sendResponse()" class="response-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <textarea matInput placeholder="Escribe tu mensaje..." formControlName="message" rows="3"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="loading || responseForm.invalid">Enviar</button>
+    <span *ngIf="sent" class="success-message">¡Mensaje enviado!</span>
+    <span *ngIf="error" class="error-message">{{ error }}</span>
+  </form>
+</section>

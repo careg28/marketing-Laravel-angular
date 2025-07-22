@@ -1,0 +1,41 @@
+<section class="admin-contenedor">
+    <h2>Usuarios registrados</h2>
+    <table mat-table [dataSource]="users" class="mat-elevation-z1" *ngIf="users.length">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Rol</th>
+        <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+    </ng-container>
+    <ng-container matColumnDef="mensaje">
+        <th mat-header-cell *matHeaderCellDef>Enviar Mensaje</th>
+        <td mat-cell *matCellDef="let user">
+          <button
+            mat-raised-button
+            class="green-gradient"
+            [routerLink]="['/admin/messages/', getConversationId(user.id)]"
+            [disabled]="!getConversationId(user.id)"
+          >
+            <mat-icon>send</mat-icon>
+            Escribir
+          </button>
+        </td>
+      </ng-container>
+      
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div *ngIf="!users.length" class="muted">No hay usuarios registrados.</div>
+</section>

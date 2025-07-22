@@ -1,0 +1,16 @@
+<section  appAnimateInView [attr.data-animate]="'fade-zoom'" class="features-section">
+  <h2 class="features-title">¿Por qué elegirnos?</h2>
+  <div class="features-cards">
+    <mat-card
+      *ngFor="let f of features; let i = index"
+      appAnimateInView
+      [attr.data-animate]="'slide-left'"
+      [style.transition-delay]="(i * 120) + 'ms'"
+      class="feature-card"
+      [ngStyle]="{'--icon-color': f.color}"
+    >
+      <mat-icon class="feature-icon" [style.color]="f.color">{{ f.icon }}</mat-icon>
+      <span class="feature-title">{{ f.title }}</span>
+    </mat-card>
+  </div>
+</section>

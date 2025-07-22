@@ -1,0 +1,27 @@
+
+.boton-desconectar .mat-icon{
+  position: relative!important;
+  top: 5px;
+  margin-right: 5px;
+}
+.boton-desconectar{
+    padding: 15px;
+}
+
+.logout-toolbar {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  
+    height: auto;
+    font-size: 1.2rem;
+}
+
+.logout-toolbar .boton-desconectar{
+  background-color: #ccff00;
+}
+
+
+
+
+

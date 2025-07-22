@@ -1,0 +1,205 @@
+/* === INTRODUCCIÓN DEL PROCESO === */
+.intro-proceso {
+    background: #f9fafe;
+    position: relative;
+    text-align: center;
+    padding: 2rem 1rem 2rem;
+  }
+  
+  .intro-proceso .wave-top {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+  }
+  
+  .intro-proceso h2 {
+    color: #224d83;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .intro-proceso p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #202020;
+  }
+  
+  /* === HERO ANIMADO === */
+  .hero-animated {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 1rem;
+    background: linear-gradient(95deg, #eaf4ff 0%, #ffffff 100%);
+    overflow: hidden;
+  }
+  
+  .hero-animated .hero-text {
+    max-width: 50%;
+  }
+  
+  .hero-animated .hero-text h1 {
+    color: #224d83;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-animated .hero-text p {
+    color: #202020;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-animated .cta-btn {
+    background: #bbff00 !important;
+    color: #202020 !important;
+    box-shadow: 0 2px 8px rgba(187, 255, 0, 0.2);
+  }
+  
+  .hero-animated .cta-btn mat-icon {
+    margin-right: 0.3rem;
+  }
+  
+  .hero-animated .hero-svg {
+    width: 200px;
+    height: 200px;
+    fill: #224d83;
+    opacity: 0.15;
+    animation: rotate 20s linear infinite;
+  }
+  
+  /* Giro continuo para SVG */
+  @keyframes rotate {
+    from   { transform: rotate(0deg); }
+    to     { transform: rotate(360deg); }
+  }
+  
+  /* === STEPPER PERSONALIZADO === */
+  .custom-stepper {
+    margin: 2rem auto;
+    max-width: 800px;
+  }
+  
+  .custom-stepper .mat-horizontal-stepper-header {
+    padding: 1rem 0;
+  }
+  
+  .custom-stepper .mat-step-icon {
+    background: #bbff00 !important;
+    color: #202020 !important;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(187, 255, 0, 0.3);
+  }
+  
+  .custom-stepper .step-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .custom-stepper .step-content .step-img {
+    width: 120px;
+    flex-shrink: 0;
+  }
+  
+  .custom-stepper .step-content .step-text h3 {
+    color: #224d83;
+    margin-bottom: 0.3rem;
+  }
+  
+  .custom-stepper .step-content .step-text p {
+    color: #202020;
+  }
+
+  /* === BENEFICIOS === */
+.beneficios {
+    background: #f6f7fc;
+    padding: 0rem 1rem;
+    text-align: center;
+  }
+  
+  .beneficios h2 {
+    font-size: 2rem;
+    color: #1e2d52;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+  
+  .grid-beneficios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .grid-beneficios .item {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .grid-beneficios, .item:hover, .grid-beneficios:focus {
+    transform: translateY(-5px) scale(1.035);
+    box-shadow: 0 7px 30px #90ff0025;
+    border-color: #aaff00!important;
+  }
+
+  .grid-beneficios .item:hover,  .grid-beneficios .item:focus{
+    border: 1px solid;
+  }
+
+  
+  
+  .grid-beneficios .item mat-icon {
+    font-size: 36px;
+    color: #224d83;
+    margin-bottom: 1rem;
+  }
+  
+  .grid-beneficios .item h3 {
+    font-size: 1.4rem;
+    color: #224d83;
+    margin-bottom: 0.5rem;
+  }
+  
+  .grid-beneficios .item p {
+    font-size: 1rem;
+    color: #202020;
+  }
+  .mat-icon{
+        height: 24px;
+        width: auto;
+        overflow: hidden;
+  }
+  
+  .contenedor-titulo-contacto, .btn-contacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  
+  
+  /* === RESPONSIVE (MÓVIL) === */
+  @media (max-width: 700px) {
+    .hero-animated {
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-animated .hero-text {
+      max-width: 100%;
+    }
+    .hero-animated .hero-svg {
+      display: none;
+    }
+    .custom-stepper .step-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  

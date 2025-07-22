@@ -1,0 +1,21 @@
+<section  appAnimateInView [attr.data-animate]="'fade-zoom'"
+  class="testimonials-section" class="testimonials-section">
+  <h2 class="section-title">Nuestros clientes opinan</h2>
+  <owl-carousel-o [options]="customOptions" class="testimonials-carousel">
+    <ng-container *ngFor="let t of testimonials">
+      <ng-template carouselSlide [id]="t.id">
+        <mat-card class="testimonial-card">
+          <div class="testimonial-header">
+            <img [src]="t.photo" alt="Foto de {{t.name}}" class="testimonial-photo">
+            <div>
+              <div class="testimonial-name">{{ t.name }}</div>
+              <div class="testimonial-role">{{ t.role }}</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">“{{ t.quote }}”</p>
+        </mat-card>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+  <button mat-flat-button color="primary" class="more-btn">Ver más casos de éxito</button>
+</section>

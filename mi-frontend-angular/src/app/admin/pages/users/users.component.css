@@ -1,0 +1,7 @@
+.admin-contenedor{
+    padding: 20px;
+}
+.green-gradient {
+    background: linear-gradient(135deg, #aaff00, #88dd00);
+    color: #fff;
+  }

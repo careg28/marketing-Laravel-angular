@@ -1,0 +1,47 @@
+.dashboard-card {
+  flex: 1 1 230px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+  border: none;
+  box-shadow: 0 4px 24px 0 rgba(34,40,57,.07);
+  padding: 24px 32px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: box-shadow .16s, transform .14s;
+  position: relative;
+}
+.dashboard-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(204,255,0,0.19);
+  transform: translateY(-3px) scale(1.02);
+}
+.icon-bubble {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(120deg, #ccff00 50%, #eaf6d7 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-bubble mat-icon {
+  font-size: 1.5rem;
+  color: #222;
+}
+.card-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #222;
+  line-height: 1;
+}
+.card-label {
+  font-size: 1.05rem;
+  color: #787878;
+}

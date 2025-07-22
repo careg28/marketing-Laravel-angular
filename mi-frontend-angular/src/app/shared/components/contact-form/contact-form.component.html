@@ -1,0 +1,65 @@
+<section appAnimateInView [attr.data-animate]="'slide-left'" [style.transition-delay]="(1 * 120) + 'ms'"class="contenedor-hablamos">
+    <div *ngIf="estaEnHome" class="contact-title-wrap">
+        <h2 class="contact-title-green">¿Hablamos?</h2>
+      </div>
+      
+    <section class="contact-section">
+        <form [formGroup]="form" (ngSubmit)="submitForm()" class="contact-form" autocomplete="off" novalidate>
+
+            <mat-form-field appearance="outline" class="contact-field">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" placeholder="Tu nombre" required>
+                @if (form.get('name')?.touched && form.get('name')?.errors) {
+                <mat-error *ngIf="form.get('name')?.hasError('required')">
+                    El nombre es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="form.get('name')?.hasError('minlength')">
+                    Mínimo 2 caracteres.
+                </mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="contact-field">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email" placeholder="tu@email.com" required>
+                @if (form.get('email')?.touched && form.get('email')?.errors) {
+                <mat-error *ngIf="form.get('email')?.hasError('required')">
+                    El email es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="form.get('email')?.hasError('email')">
+                    Debe ser un email válido.
+                </mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="contact-field">
+                <mat-label>Mensaje</mat-label>
+                <textarea matInput formControlName="message" rows="4" placeholder="Cuéntanos tu proyecto..."
+                    required></textarea>
+                <mat-hint align ="end">
+                    {{ form.get('message')?.value?.length || 0 }}/800
+                </mat-hint>
+                @if (form.get('message')?.touched && form.get('message')?.errors) {
+                <mat-error *ngIf="form.get('message')?.hasError('required')">
+                    El mensaje es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('minlength')">
+                    Mínimo 40 caracteres.
+                </mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('maxlength')">
+                    Máximo 800 caracteres.
+                </mat-error>
+                }
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" type="submit" class="contact-btn" [disabled]="form.invalid || sent">
+                {{ sent ? '¡Mensaje enviado!' : 'Enviar' }}
+            </button>
+
+            @if (error) {
+            <div class="form-error">{{ error }}</div>
+            }
+
+        </form>
+    </section>
+</section>

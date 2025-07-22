@@ -1,0 +1,31 @@
+<section class="contenedor-paquetes dashboard-section">
+  <div class="contact-title-wrap">
+    <h2 class="contact-title-green">Paquetes Activos</h2>
+  </div>
+
+  <div class="paquete-container">
+    <mat-card class="paquete-card" *ngFor="let pkg of paquetes">
+      <mat-card-header>
+        <mat-card-title>{{ pkg.name }}</mat-card-title>
+        <mat-card-subtitle>{{ pkg.price | currency:'EUR' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ pkg.description }}</p>
+        <ul class="features-list" *ngIf="pkg.features?.length">
+          <li *ngFor="let feature of pkg.features">
+            <mat-icon color="primary" fontIcon="check_circle">check_circle</mat-icon>
+            {{ feature }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="contenedor-edit-botton">
+    <button mat-raised-button class="btn-contratar" [routerLink]="['/admin/paquetes/']">
+      <mat-icon>edit</mat-icon>
+      <span>Modificar paquetes</span>
+    </button>              
+  </div>
+</section>
+  

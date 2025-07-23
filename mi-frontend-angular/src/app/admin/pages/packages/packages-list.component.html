@@ -13,8 +13,8 @@
     (saved)="onSaved()"
     (cancelled)="onCancelled()"
   ></app-package-form>
-
-  <table *ngIf="!showForm" class="packages-table mat-elevation-z2">
+  <div class="table-responsive">
+    <table *ngIf="!showForm" class="packages-table mat-elevation-z2">
   <thead>
     <tr>
       <th>Nombre</th>
@@ -50,4 +50,5 @@
     </tr>
   </tbody>
 </table>
+</div>
 </section>

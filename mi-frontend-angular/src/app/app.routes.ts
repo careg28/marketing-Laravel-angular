@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { RegisterComponent } from './auth/register/register.component';
+
 
 export const routes: Routes = [
   // Rutas públicas
@@ -12,7 +14,8 @@ export const routes: Routes = [
       { path: 'projectos', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent) },
       { path: 'servicios', loadComponent: () => import('./pages/services/services.component').then(m => m.ServicesComponent) },
       { path: 'contacto', loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent) },
-      { path: 'login', loadComponent: () => import('./shared/components/login/login.component').then(m => m.LoginComponent) },
+      { path: 'login', loadComponent: () => import('./auth/login/login.component').then(m => m.LoginComponent) },
+      { path: 'registro', loadComponent: () => import('./auth/register/register.component').then(m => m.RegisterComponent)},
       { path: 'nuestro-proceso', loadComponent: () => import('./pages/nuestro-proceso/nuestro-proceso.component').then(m => m.NuestroProcesoComponent) }
 
     ]

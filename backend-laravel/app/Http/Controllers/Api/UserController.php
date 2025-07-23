@@ -28,6 +28,7 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
+            'tel' => 'nullable|string|max:20',
             'password'=>'required|min:6',
             'role'=>'required'
         ]);
@@ -35,6 +36,7 @@ class UserController extends Controller
         $user = User::create([
             'name'=>$request->name,
             'email'=>$request->email,
+            'tel' => $request->tel,
             'password'=>bcrypt($request->password),
             'role'=>$request->role,
         ]);

@@ -14,7 +14,7 @@
         <ul class="features-list" *ngIf="pkg.features?.length">
           <li *ngFor="let feature of pkg.features">
             <mat-icon color="primary" fontIcon="check_circle">check_circle</mat-icon>
-            {{ feature }}
+            {{ feature.label }}
           </li>
         </ul>
       </mat-card-content>

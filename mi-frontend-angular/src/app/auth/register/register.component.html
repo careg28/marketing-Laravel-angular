@@ -1,0 +1,54 @@
+<section class="hero-animated">
+    <div class="hero-text">
+        <div class="texto-registro">
+            <h1><span class="icon">🌟</span> Da el primer paso digital</h1>
+            <p>Regístrate ahora y accede a herramientas que harán crecer tu negocio</p>
+          </div>
+          
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" />
+                <mat-hint *ngIf="getFieldError('name')">{{ getFieldError('name') }}</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" />
+                <mat-hint *ngIf="getFieldError('email')">{{ getFieldError('email') }}</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Teléfono(Opcional)</mat-label>
+                <input matInput type="tel" formControlName="tel" />
+                <mat-hint *ngIf="registerForm.get('tel')?.touched && registerForm.get('tel')?.hasError('pattern')">
+                    Número de teléfono no válido. Usa formato internacional o nacional sin letras.
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password" />
+                <mat-hint *ngIf="getFieldError('password')">{{ getFieldError('password') }}</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Confirmar contraseña</mat-label>
+                <input matInput type="password" formControlName="password_confirmation" />
+                <mat-hint
+                    *ngIf="registerForm.get('password_confirmation')?.touched && registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value">
+                    Las contraseñas no coinciden
+                </mat-hint>
+            </mat-form-field>
+
+            <button mat-button class="cta-btn" type="submit" [disabled]="isLoading">
+                <mat-icon *ngIf="!isLoading">how_to_reg</mat-icon>
+                <mat-spinner *ngIf="isLoading" diameter="20" strokeWidth="4" color="accent"></mat-spinner>
+                {{ isLoading ? 'Registrando...' : 'Registrarse' }}
+              </button>
+              
+        </form>
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    </div>
+</section>

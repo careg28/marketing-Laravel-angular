@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ConversationController;
 use App\Http\Controllers\Api\ContactMessageController;
 use App\Http\Controllers\Api\ContactController;
+use Illuminate\Auth\Events\Verified;
+
 
 
 // --- Rutas de autenticación ---
@@ -53,6 +55,35 @@ Route::apiResource('package-features', PackageFeatureController::class);
 //formulario contacto
 Route::post('/contacts', [ContactController::class, 'store']);
 Route::get('/contacts', [ContactController::class, 'index']);
+
+//registro
+Route::post('registro', [AuthController::class, 'register']);
+
+//verificacion correo electronico
+// Ruta para enviar el enlace de verificación
+Route::middleware('auth:sanctum')->post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return response()->json(['message' => 'Enlace de verificación enviado.']);
+});
+
+// Ruta para verificar el correo
+Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
+    $user = \App\Models\User::findOrFail($id);
+
+    if (! hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
+        return response()->json(['message' => 'Enlace de verificación inválido'], 400);
+    }
+
+    if ($user->hasVerifiedEmail()) {
+        return response()->json(['message' => 'El correo ya está verificado']);
+    }
+
+    $user->markEmailAsVerified();
+    event(new Verified($user));
+
+    return response()->json(['message' => 'Correo verificado con éxito']);
+})->middleware(['signed'])->name('verification.verify');
+
 
 
 

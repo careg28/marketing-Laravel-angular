@@ -36,5 +36,15 @@ export class AuthService {
   getUserActive() {
   return this.http.get(`${this.apiUrl}/user`);
 }
+
+register(data: { name: string; email: string; password: string; password_confirmation: string }) {
+  return this.http.post<{ token: string }>(`${this.apiUrl}/registro`, data).pipe(
+    tap(response => {
+      console.log('Registro exitoso:', response);
+      localStorage.setItem('token', response.token);
+    })
+  );
+}
+
 }
 

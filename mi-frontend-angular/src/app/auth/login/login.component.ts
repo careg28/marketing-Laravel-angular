@@ -38,17 +38,27 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.invalid) return;
-
+  
     this.loading = true;
     this.error = null;
-
+  
     const { email, password } = this.loginForm.value;
-    
+  
     this.auth.login(email, password).subscribe({
       next: (res) => {
         console.log('Login exitoso', res);
         this.loading = false;
-        this.router.navigate(['/admin']);
+  
+        const role = res.user?.role; // obtener rol directamente
+        localStorage.setItem('role', role); // guardamos el role
+  
+        if (role === 'admin') {
+          this.router.navigate(['/admin/inicio']);
+        } else if (role === 'user') {
+          this.router.navigate(['/usuarios/panel']);
+        } else {
+          this.router.navigate(['/']); 
+        }
       },
       error: (err) => {
         this.loading = false;
@@ -56,4 +66,5 @@ export class LoginComponent {
       },
     });
   }
+  
 }

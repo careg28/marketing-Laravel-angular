@@ -1,0 +1,13 @@
+.user-menu-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  button[mat-button] {
+    font-weight: 600;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  

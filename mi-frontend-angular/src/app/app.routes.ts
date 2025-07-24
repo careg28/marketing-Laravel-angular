@@ -37,6 +37,28 @@ export const routes: Routes = [
       { path: 'mensajes-anonimos', loadComponent: () => import('./admin/pages/anonymous-messages/anonymous-messages.component').then(m => m.AnonymousMessagesComponent) },
     ]
   },
+
+  //rutas usuario panel
+  {
+    path: 'usuarios',
+    canMatch: [AuthGuard], // Protege según rol
+    loadComponent: () =>
+      import('./layouts/user-layout/user-layout.component').then(m => m.UserLayoutComponent),
+    children: [
+      {
+        path: '',
+        redirectTo: 'panel',
+        pathMatch: 'full'
+      },
+      {
+        path: 'panel',
+        loadComponent: () =>
+          import('./user/pages/panel/panel.component').then(m => m.PanelComponent)
+      }
+    ]
+  },
+  
+  
   // Redirección si no existe la ruta
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

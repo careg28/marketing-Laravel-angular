@@ -7,11 +7,12 @@ import { TestimonialCarouselComponent } from "../../shared/components/testimonia
 import { FeaturesCardsComponent } from "../../shared/components/features-cards/features-cards.component";
 import { ContactFormComponent } from "../../shared/components/contact-form/contact-form.component";
 import { CardsPackageComponent } from "../../shared/components/cards-package/cards-package.component";
+import { UserMenuPerfilComponent } from "../../shared/components/user-menu-perfil/user-menu-perfil.component";
 
 
 @Component({
   selector: 'app-home',
-  imports: [MatCardModule, MatIconModule, CommonModule, SwadowSeparatorComponent, TestimonialCarouselComponent, FeaturesCardsComponent, ContactFormComponent, CardsPackageComponent],
+  imports: [MatCardModule, MatIconModule, CommonModule, SwadowSeparatorComponent, TestimonialCarouselComponent, FeaturesCardsComponent, ContactFormComponent, CardsPackageComponent, UserMenuPerfilComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

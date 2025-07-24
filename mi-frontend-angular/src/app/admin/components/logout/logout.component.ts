@@ -3,6 +3,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { MatIconModule } from "@angular/material/icon";
 import { NgClass } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-logout',
@@ -18,6 +19,8 @@ export class LogoutComponent {
   //  inyección de servicios
   private authService = inject(AuthService);
   private router = inject(Router);
+  private toastr = inject(ToastrService);
+
 
   //  función que devuelve la clase según el contexto
   getPositionClass(): string {
@@ -26,7 +29,15 @@ export class LogoutComponent {
 
   //  lógica de logout
   logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+    this.authService.logout().subscribe({
+      next: () => {
+        this.toastr.success('Sesión cerrada correctamente');
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        this.toastr.error('Error al cerrar sesión');
+      }
+    });
   }
+  
 }

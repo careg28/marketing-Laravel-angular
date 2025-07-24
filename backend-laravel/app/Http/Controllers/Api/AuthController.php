@@ -29,7 +29,11 @@ class AuthController extends Controller
 
         return response()->json([
             'token' => $token,
-            'user'  => $user
+            'user' => [
+            'id' => $user->id,
+            'name' => $user->name,
+            'role' => $user->role,
+        ]
         ]);
     }
 
@@ -65,4 +69,12 @@ class AuthController extends Controller
             'message' => 'Usuario registrado. Por favor, verifica tu correo electrónico.'
         ], 201);
     }
+
+    //finalizar session
+    public function logout(Request $request){
+    $request->user()->currentAccessToken()->delete();
+
+    return response()->json(['message' => 'Sesión cerrada correctamente']);
+    }
+
 }

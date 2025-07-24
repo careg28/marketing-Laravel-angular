@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterModule } from '@angular/router';
 import { BtnEscribenosComponent } from "../btn-escribenos/btn-escribenos.component";
+import { UserMenuPerfilComponent } from "../user-menu-perfil/user-menu-perfil.component";
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,8 @@ import { BtnEscribenosComponent } from "../btn-escribenos/btn-escribenos.compone
     RouterLink,
     RouterModule // Importamos RouterModule para que Angular reconozca routerLinkActiveOptions
     ,
-    BtnEscribenosComponent
+    BtnEscribenosComponent,
+    UserMenuPerfilComponent
 ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']

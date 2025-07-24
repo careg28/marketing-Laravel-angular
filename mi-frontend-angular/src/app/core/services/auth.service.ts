@@ -2,6 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/enviroment';
 import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { UserService } from './user.service';
 
 
 @Injectable({
@@ -12,18 +14,26 @@ export class AuthService {
   private apiUrl = environment.apiUrl;
 
   //login
- login(email: string, password: string) {
-  return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
-    tap(response => {
-      console.log('Login response:', response);
-      localStorage.setItem('token', response.token);
-    })
+  login(email: string, password: string) {
+    return this.http.post<{ token: string; user: { role: string, name:string } }>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.user.role); 
+        localStorage.setItem('name', response.user.name);
+      })
+    );
+  }
+  
+  
+  
+logout(): Observable<any> {
+  return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
+    tap(() => localStorage.removeItem('token'))
   );
 }
-  
-  logout() {
-    localStorage.removeItem('token');
-  }
+
+
+
 
   getToken() {
     return localStorage.getItem('token');

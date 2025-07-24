@@ -15,3 +15,7 @@
   margin-top: 1rem;
   text-align: center;
 }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--invalid .mdc-floating-label {
+    color: var(--mdc-filled-text-field-error-label-text-color, var(--mat-sys-error));
+}

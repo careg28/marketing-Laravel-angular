@@ -12,7 +12,7 @@ import { UserMenuPerfilComponent } from "../../shared/components/user-menu-perfi
 
 @Component({
   selector: 'app-home',
-  imports: [MatCardModule, MatIconModule, CommonModule, SwadowSeparatorComponent, TestimonialCarouselComponent, FeaturesCardsComponent, ContactFormComponent, CardsPackageComponent, UserMenuPerfilComponent],
+  imports: [MatCardModule, MatIconModule, CommonModule, SwadowSeparatorComponent, TestimonialCarouselComponent, FeaturesCardsComponent, ContactFormComponent, CardsPackageComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -13,7 +13,7 @@
   <div class="navbar-right">
     <app-user-menu-perfil></app-user-menu-perfil>
     <!-- boton escribenos -->
-   <app-btn-escribenos></app-btn-escribenos>
+   <app-btn-escribenos *ngIf="!name"></app-btn-escribenos>
     <!-- Hamburguesa SOLO en mobile -->
     <button mat-icon-button class="menu-button" aria-label="Toggle menu" (click)="menuOpen = true">
       <mat-icon>menu</mat-icon>

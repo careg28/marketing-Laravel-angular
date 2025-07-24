@@ -1,10 +1,11 @@
 <div *ngIf="name" class="user-menu-container">
-    <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>account_circle</mat-icon>
-      {{ name }}
-      <mat-icon>expand_more</mat-icon>
-    </button>
-  
+    <div class="boton-admin-container">
+        <button mat-button [matMenuTriggerFor]="menu">   
+        <mat-icon class="account-circle">account_circle</mat-icon>
+        <span>{{ name }} </span>
+       <span class="expansor"><mat-icon>expand_more</mat-icon></span>
+        </button>
+    </div>   
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="goToPanel()">
         <mat-icon>dashboard</mat-icon>
